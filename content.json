@@ -1,0 +1,58 @@
+{
+  "special": {
+    "show": true,
+    "date": "",
+    "dish": "",
+    "comesWith": "",
+    "price": "",
+    "soldOut": false
+  },
+
+  "favourite": {
+    "dish": "Lamb curry",
+    "comesWith": "Lamb on the bone, with basmati rice or roti, and salad."
+  },
+
+  "hours": {
+    "confirmed": false,
+    "monday": "closed",
+    "tuesday": "09:00-18:00",
+    "wednesday": "09:00-18:00",
+    "thursday": "09:00-18:00",
+    "friday": "09:00-18:00",
+    "saturday": "09:30-14:00",
+    "sunday": "09:30-14:00",
+    "note": ""
+  },
+
+  "menu": [
+    {
+      "group": "Curries",
+      "items": [
+        { "name": "Lamb curry", "description": "Lamb on the bone. With basmati rice or roti, and salad.", "price": "", "signature": true, "soldOut": false },
+        { "name": "", "description": "", "price": "", "signature": false, "soldOut": false, "placeholder": "More curries: names and prices from Rowie" }
+      ]
+    },
+    {
+      "group": "Biryani",
+      "items": [
+        { "name": "Biryani", "description": "", "price": "", "signature": true, "soldOut": false, "placeholder": "What's in it and the options, from Rowie" }
+      ]
+    },
+    {
+      "group": "Rotis and sides",
+      "items": [
+        { "name": "Roti", "description": "", "price": "", "signature": true, "soldOut": false, "placeholder": "Sizes, fillings and price, from Rowie" },
+        { "name": "", "description": "", "price": "", "signature": false, "soldOut": false, "placeholder": "Sides: names and prices from Rowie" }
+      ]
+    }
+  ],
+
+  "spices": [
+    { "name": "", "description": "", "heat": 0, "goodFor": "", "size": "", "price": "", "soldOut": false, "placeholder": "Spice from the shelf: name, size, price and heat, from Rowie" },
+    { "name": "", "description": "", "heat": 0, "goodFor": "", "size": "", "price": "", "soldOut": false, "placeholder": "Spice from the shelf: name, size, price and heat, from Rowie" },
+    { "name": "", "description": "", "heat": 0, "goodFor": "", "size": "", "price": "", "soldOut": false, "placeholder": "Spice from the shelf: name, size, price and heat, from Rowie" }
+  ],
+
+  "logo": ""
+}
