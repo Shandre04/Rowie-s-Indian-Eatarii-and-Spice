@@ -1,0 +1,7 @@
+# working screenshots and test captures (regenerate any time)
+.impeccable/review/
+.playwright-mcp/
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
