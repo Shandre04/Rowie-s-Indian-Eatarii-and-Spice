@@ -598,3 +598,46 @@ section { position: relative; }
   padding: calc(6px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 6px max(16px, env(safe-area-inset-left, 0px));
 }
 .preview-bar + .sign .bar { padding-top: 14px; }
+
+/* ---------- spice packets on a rail: same sway / pull / swap as the chillies ---------- */
+.shelf { position: relative; overflow: hidden; }   /* a dropped packet falls out of sight at the section's edge */
+.packets { position: relative; height: 330px; }
+.packets__rail {
+  position: absolute; left: 2%; right: 2%; top: 14px; height: 12px; border-radius: 6px;
+  background: linear-gradient(#7A5634, #4A3020); box-shadow: 0 6px 10px -6px rgba(58,36,22,.6);
+}
+.packets .hc { top: 20px; --len: 20px; --w: 104px; }
+.packets .hc[data-i="0"] { left: 13%; }
+.packets .hc[data-i="1"] { left: 37.5%; --len: 30px; animation-duration: 5s; animation-delay: -1.1s; }
+.packets .hc[data-i="2"] { left: 62%; --len: 16px; animation-duration: 6.2s; animation-delay: -2.4s; }
+.packets .hc[data-i="3"] { left: 86.5%; --len: 26px; animation-duration: 4.7s; animation-delay: -3.3s; }
+.packets .hc__string { background: rgba(58,36,22,.6); }
+.packets .hc__body { border-radius: 8px; }
+.packets .hc__body:focus-visible { outline-color: var(--cumin); }
+.pk-fill { fill: var(--pk, #C1201A); }
+.sp-fill { fill: var(--sp, #E8A317); }
+@media (max-width: 759px) {
+  .packets { height: 240px; margin-top: 8px; }
+  .packets .hc { --w: 72px; --len: 14px; }
+  .packets .hc[data-i="1"] { --len: 22px; }
+  .packets .hc[data-i="2"] { --len: 10px; }
+  .packets .hc[data-i="3"] { --len: 18px; }
+}
+/* phones: let a swipe over the packets still scroll the page; a tap still pulls one */
+@media (pointer: coarse) { .packets .hc__body { touch-action: pan-y; } }
+
+/* ---------- spice cards are packets, not jars: crimped seal and a peg instead of a lid ---------- */
+.jars { row-gap: 40px; padding-top: 18px; }
+.jar { border-radius: 6px 6px 16px 16px; padding-top: 30px; }
+.jar::before {
+  left: -2px; right: -2px; top: -2px; height: 18px; border-radius: 4px 4px 0 0;
+  border: 2px solid var(--cumin);
+  background-color: var(--chilli);
+  background-image: repeating-linear-gradient(90deg, transparent 0 7px, rgba(0,0,0,.22) 7px 8.5px);
+}
+.jar::after {
+  content: ""; position: absolute; left: 50%; top: -16px; width: 12px; height: 24px; translate: -50% 0;
+  background: #6B4A2B; border: 2px solid var(--cumin); border-radius: 3px;
+}
+.jar--empty::before { background-color: rgba(184,35,27,.35); border-style: dashed; }
+.jar--empty::after { background: rgba(107,74,43,.45); border-style: dashed; }

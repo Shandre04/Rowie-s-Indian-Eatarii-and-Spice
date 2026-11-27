@@ -297,19 +297,28 @@
   /* ---------- hanging chillies: they sway, you can pull one down, and a different one drops in ----------
      Track phase: the chilli follows the pointer 1:1 (rubber-band resistance on the string).
      Release: a spring seeded with the release velocity. Pull far or fast enough and it snaps off. */
-  function hangingChillies() {
-    const root = $("[data-hanger]");
+  const CHILLI_KINDS = [
+    { color: "#8E1A14", vars: { "--stem": "#4A6629" }, scale: 1 },     // red
+    { color: "#4F7A26", vars: { "--stem": "#2F4A16" }, scale: .92 },   // green
+    { color: "#EBA51C", vars: { "--stem": "#4A6629" }, scale: .8 },    // yellow
+    { color: "#4A0E0B", vars: { "--stem": "#3A2416" }, scale: .86 },   // dried
+    { color: "#D2561E", vars: { "--stem": "#4A6629" }, scale: .72 },   // orange
+    { color: "#C1201A", vars: { "--stem": "#4A6629" }, scale: .55 },   // little bird's-eye
+  ];
+  // spice packets: pouch colour and the colour of the spice showing through the window
+  const PACKET_KINDS = [
+    { vars: { "--pk": "#C1201A", "--sp": "#E8A317" }, scale: 1 },    // red pouch, turmeric
+    { vars: { "--pk": "#4A6629", "--sp": "#B8231B" }, scale: .94 },  // green pouch, chilli powder
+    { vars: { "--pk": "#6B4A2B", "--sp": "#9A7440" }, scale: .9 },   // brown pouch, cumin
+    { vars: { "--pk": "#D2561E", "--sp": "#5A3A22" }, scale: .96 },  // orange pouch, garam masala
+    { vars: { "--pk": "#3A2416", "--sp": "#7E8C3A" }, scale: .88 },  // dark pouch, coriander
+    { vars: { "--pk": "#8E1A14", "--sp": "#C2491A" }, scale: .92 },  // deep red pouch, paprika
+  ];
+
+  function hangers(root, KINDS, startKind) {
     if (!root) return;
     const reduce = matchMedia("(prefers-reduced-motion: reduce)");
-    const KINDS = [
-      { color: "#8E1A14", stem: "#4A6629", scale: 1 },     // red
-      { color: "#4F7A26", stem: "#2F4A16", scale: .92 },   // green
-      { color: "#EBA51C", stem: "#4A6629", scale: .8 },    // yellow
-      { color: "#4A0E0B", stem: "#3A2416", scale: .86 },   // dried
-      { color: "#D2561E", stem: "#4A6629", scale: .72 },   // orange
-      { color: "#C1201A", stem: "#4A6629", scale: .55 },   // little bird's-eye
-    ];
-    let kindCursor = 1;
+    let kindCursor = 0;
     const SNAP_AT = 115;
     const rubber = (d) => (d <= 0 ? d * 0.18 : 200 * (1 - Math.exp(-d / 200)));
     // inverse of rubber(): where the "finger" would be for a given pull, so a grab starts exactly where the chilli is
@@ -323,17 +332,18 @@
         p: 0, vp: 0,                    // pull on the string (px)
         fy: 0, fv: 0, spin: 0, fade: 1, // the falling chilli
         state: "hang",                  // hang | drag | fall | drop
-        phase: i * 1.7, kind: 0, scale: 1,  // both start as the red chilli
+        phase: i * 1.7, kind: startKind(i), scale: 1,
         drag: null, tapPull: false,
       };
+      kindCursor = Math.max(kindCursor, s.kind);
       paint(s);
       return s;
     });
 
     function paint(s) {
       const k = KINDS[s.kind % KINDS.length];
-      s.body.style.color = k.color;
-      s.body.style.setProperty("--stem", k.stem);
+      if (k.color) s.body.style.color = k.color;
+      for (const [name, value] of Object.entries(k.vars || {})) s.body.style.setProperty(name, value);
       s.scale = k.scale;
     }
 
@@ -352,8 +362,11 @@
       s.drag = null; s.tapPull = false;
     }
     function dropNew(s) {
-      kindCursor = (kindCursor + 1) % KINDS.length;
-      if (chillies.some((o) => o !== s && o.kind === kindCursor)) kindCursor = (kindCursor + 1) % KINDS.length;
+      // next kind not already hanging (and never the one that just fell)
+      for (let tries = 0; tries < KINDS.length; tries++) {
+        kindCursor = (kindCursor + 1) % KINDS.length;
+        if (kindCursor !== s.kind && !chillies.some((o) => o !== s && o.kind === kindCursor)) break;
+      }
       s.kind = kindCursor; paint(s);
       s.state = "drop"; s.fy = 0; s.fv = 0; s.spin = 0; s.fade = 1;
       s.p = -(s.len + 40); s.vp = 0; s.va += (Math.random() - 0.5) * 30;
@@ -465,7 +478,7 @@
     function wake() { if (!raf && visible) { last = 0; raf = requestAnimationFrame(step); } }
 
     new IntersectionObserver(([e]) => { visible = e.isIntersecting && !document.hidden; if (visible) wake(); })
-      .observe(root.closest(".sign"));
+      .observe(root.closest("section, header") || root);
     document.addEventListener("visibilitychange", () => { visible = !document.hidden; if (visible) wake(); });
     if (reduce.addEventListener) reduce.addEventListener("change", wake);
     chillies.forEach(render);
@@ -494,7 +507,8 @@
   async function init() {
     wireLinks();
     orderBar();
-    hangingChillies();
+    hangers($("[data-hanger]"), CHILLI_KINDS, () => 0);        // both chillies start red
+    hangers($("[data-packets]"), PACKET_KINDS, (i) => i);    // four different packets
     const raw = await load();
     const c = applyPreview(raw);
     renderLogo(c);

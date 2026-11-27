@@ -6,7 +6,7 @@ The shop's own painted sign and order docket. Not a restaurant template. Written
 - **Signboard:** a chilli-red field owns the top of every page and the footer, with a torn-paper edge where it meets the cream counter paper. Two hand-drawn chillies hang off the home sign.
 - **Kitchen docket:** today's special (or the house favourite) is a waiter's-pad slip: perforated top, faint ruled lines, the dish name in handwriting, tilted -1.2°, and a SOLD OUT rubber stamp when it's finished.
 - **Price board:** the menu is a dark cumin board with handwritten group names in turmeric, dotted leaders, and "Price on WhatsApp" when no price is set.
-- **Spice shelf:** a turmeric section with drawn jars on a plank. On the spices page, each spice is a jar label with a red lid and a heat meter made of 0–5 drawn chillies.
+- **Spice shelf:** a turmeric section with spice packets (the way Rowie's sells them) pegged to a wooden rail. Each packet is a coloured pouch with a crimped seal, a blank label and a window showing the spice. They sway, pull and swap like the hero chillies. On the spices page, each spice card is a packet: a crimped chilli seal, a peg, and a heat meter made of 0–5 drawn chillies.
 - **Placeholders:** masking-tape notes (dashed border, Kalam handwriting, `[square brackets]`). Every unknown uses one. Never fake content.
 
 ## Colour (tokens in `assets/site.css :root`)
@@ -17,7 +17,7 @@ The shop's own painted sign and order docket. Not a restaurant template. Written
 | `--turmeric` | #EBA51C | The one sharp accent: the order button on red (cumin text 6.9:1); spice-shelf field |
 | `--turmeric-soft` | #F4CD72 | Headline highlight on red (large text only) |
 | `--cream` | #F5E9D0 | Page ground |
-| `--paper` | #FBF4E4 | Docket and jar labels |
+| `--paper` | #FBF4E4 | Docket and packet cards |
 | `--cumin` | #3A2416 | Text (12:1 on cream) |
 | `--cumin-soft` | #6E5341 | Secondary text (5.9:1 on cream) |
 | `--board` | #2E1C12 | Menu board |
@@ -26,7 +26,7 @@ The shop's own painted sign and order docket. Not a restaurant template. Written
 
 ## Type
 - **Display:** Bricolage Grotesque 700–800 (opsz 12–96): headlines, prices, numerals, the phone number and times (its zero isn't slashed).
-- **Hand:** Kalam 700: dish names on the docket, jar names, menu group names, placeholders.
+- **Hand:** Kalam 700: dish names on the docket, spice names on the packet cards, menu group names, placeholders.
 - **Body:** Atkinson Hyperlegible 400/700, from 17px.
 - Loaded from Google Fonts with `display=swap` (latin subsets are served automatically).
 
