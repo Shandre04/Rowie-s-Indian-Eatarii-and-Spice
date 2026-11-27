@@ -6,7 +6,7 @@ The shop's own painted sign and order docket. Not a restaurant template. Written
 - **Signboard:** a chilli-red field owns the top of every page and the footer, with a torn-paper edge where it meets the cream counter paper. Two hand-drawn chillies hang off the home sign.
 - **Kitchen docket:** today's special (or the house favourite) is a waiter's-pad slip: perforated top, faint ruled lines, the dish name in handwriting, tilted -1.2°, and a SOLD OUT rubber stamp when it's finished.
 - **Price board:** the menu is a dark cumin board with handwritten group names in turmeric, dotted leaders, and "Price on WhatsApp" when no price is set.
-- **Spice shelf:** a turmeric section with spice packets (the way Rowie's sells them) pegged to a wooden rail. Each packet is a coloured pouch with a crimped seal, a blank label and a window showing the spice. They sway, pull and swap like the hero chillies. On the spices page, each spice card is a packet: a crimped chilli seal, a peg, and a heat meter made of 0–5 drawn chillies.
+- **Spice shelf:** a turmeric section with spice packets (the way Rowie's sells them) on store hooks off a metal bar. Every packet is the same shop-red pouch (crimped seal, blank label, punched hang hole), hung on a chrome store hook; only the spice colour in its window changes. They sway on the hook, pull and swap like the hero chillies. On the spices page, each spice card is a packet: a crimped chilli seal, a peg, and a heat meter made of 0–5 drawn chillies.
 - **Placeholders:** masking-tape notes (dashed border, Kalam handwriting, `[square brackets]`). Every unknown uses one. Never fake content.
 
 ## Colour (tokens in `assets/site.css :root`)

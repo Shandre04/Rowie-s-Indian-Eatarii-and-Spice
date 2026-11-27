@@ -546,7 +546,7 @@ section { position: relative; }
   background: rgba(245,233,208,.55); transform-origin: 0 0;
 }
 .hc__body {
-  position: absolute; top: var(--len); left: calc(var(--w) * -.5);
+  position: absolute; top: var(--top, var(--len)); left: calc(var(--w) * -.5);
   width: var(--w); color: var(--chilli-deep);
   pointer-events: auto; cursor: grab;
   touch-action: none;
@@ -641,3 +641,32 @@ section { position: relative; }
 }
 .jar--empty::before { background-color: rgba(184,35,27,.35); border-style: dashed; }
 .jar--empty::after { background: rgba(107,74,43,.45); border-style: dashed; }
+
+/* ---------- packets hang on store hooks, not strings ----------
+   One shop-red pouch for every spice; each hangs by the punched hole in its seal on a metal hook.
+   The hook point is the swing pivot, so the packet sways on the hook. */
+.packets__rail {
+  top: 12px; height: 12px; border-radius: 6px;
+  background: linear-gradient(#D5D9DC, #8E9398 55%, #5E6368);
+  box-shadow: 0 5px 9px -5px rgba(58,36,22,.55);
+}
+.packets .hc { top: 52px; --len: 70px; --top: -19px; }
+.packets .hc__string { display: none; }
+.pk-fill { fill: #D8341C; }
+.pk-hook {
+  position: absolute; top: 20px; width: 5px; height: 32px; translate: -50% 0; z-index: 2; pointer-events: none;
+  border-radius: 3px; background: linear-gradient(90deg, #6D7277, #E1E4E6 45%, #7B8085);
+}
+.pk-hook::after {
+  content: ""; position: absolute; left: 50%; bottom: -5px; width: 11px; height: 11px; translate: -50% 0; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #F3F5F6, #9AA0A5 55%, #5F6469);
+  box-shadow: 0 2px 3px rgba(0,0,0,.35);
+}
+.pk-hook[data-i="0"] { left: 13%; }
+.pk-hook[data-i="1"] { left: 37.5%; }
+.pk-hook[data-i="2"] { left: 62%; }
+.pk-hook[data-i="3"] { left: 86.5%; }
+@media (max-width: 759px) {
+  .packets .hc { top: 48px; --top: -13px; }
+  .pk-hook { top: 18px; height: 30px; }
+}

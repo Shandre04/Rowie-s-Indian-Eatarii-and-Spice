@@ -305,14 +305,14 @@
     { color: "#D2561E", vars: { "--stem": "#4A6629" }, scale: .72 },   // orange
     { color: "#C1201A", vars: { "--stem": "#4A6629" }, scale: .55 },   // little bird's-eye
   ];
-  // spice packets: pouch colour and the colour of the spice showing through the window
+  // spice packets: every pouch is the same shop red; only the spice in the window changes
   const PACKET_KINDS = [
-    { vars: { "--pk": "#C1201A", "--sp": "#E8A317" }, scale: 1 },    // red pouch, turmeric
-    { vars: { "--pk": "#4A6629", "--sp": "#B8231B" }, scale: .94 },  // green pouch, chilli powder
-    { vars: { "--pk": "#6B4A2B", "--sp": "#9A7440" }, scale: .9 },   // brown pouch, cumin
-    { vars: { "--pk": "#D2561E", "--sp": "#5A3A22" }, scale: .96 },  // orange pouch, garam masala
-    { vars: { "--pk": "#3A2416", "--sp": "#7E8C3A" }, scale: .88 },  // dark pouch, coriander
-    { vars: { "--pk": "#8E1A14", "--sp": "#C2491A" }, scale: .92 },  // deep red pouch, paprika
+    { vars: { "--sp": "#E8A317" }, scale: 1 },  // turmeric
+    { vars: { "--sp": "#7A1410" }, scale: 1 },  // chilli powder
+    { vars: { "--sp": "#9A7440" }, scale: 1 },  // cumin
+    { vars: { "--sp": "#5A3A22" }, scale: 1 },  // garam masala
+    { vars: { "--sp": "#7E8C3A" }, scale: 1 },  // coriander
+    { vars: { "--sp": "#C9A24A" }, scale: 1 },  // fenugreek
   ];
 
   function hangers(root, KINDS, startKind) {
