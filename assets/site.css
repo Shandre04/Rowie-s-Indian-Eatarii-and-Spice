@@ -670,3 +670,16 @@ section { position: relative; }
   .packets .hc { top: 48px; --top: -13px; }
   .pk-hook { top: 18px; height: 30px; }
 }
+
+/* ---------- bigger packets, so the shelf fills its half ----------
+   --top keeps each packet's punched hole on its hook: the hole sits 18.5/150 of the way down the pouch. */
+.packets { height: 360px; }
+.packets .hc { --w: 128px; --top: calc(var(--w) * -0.185); }
+@media (max-width: 759px) {
+  .packets { height: 250px; }
+  .packets .hc { --w: 80px; }
+}
+/* size the packets to the space they hang in: 128px max, never wider than ~22% of the rail (hooks sit 24.5% apart) */
+.packets { container-type: inline-size; }
+.packets .hc, .packets .hc[data-i] { --w: min(128px, 21.5cqw); }
+@media (max-width: 759px) { .packets { height: 190px; } }
